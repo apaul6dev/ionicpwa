@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inicio</ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button color="primary" id="nested-button" (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-row>
+    <ion-col size="12" class="ion-justify-content-center textoCentrado"
+      *ngIf="config && config.tienelogo && config.urllogo">
+      <img src="{{config.urllogo}}" text-center alt="" class="logo headerBanner" />
+    </ion-col>
+  </ion-row>
+  <ion-col size="12" *ngIf="config.tienealarmas ">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-justify-content-center textoCentrado">
+        <img [src]="roboiconoactual" alt="" text-center class="logo roboIcono"
+          [ngClass]="[dispositivo.presionado =='robo'? 'botonRoboPresionado': '']" (touchstart)="presionar('robo')"
+          (touchend)="soltar('robo')" />
+
+
+      </ion-col>
+    </ion-row>
+
+
+
+    <ion-row class="centrarElementos noPadding">
+      <ion-col size="4" class="noPadding textoCentrado">
+        <img [src]="fuegoiconoactual" alt="" text-center class="logo noPadding botonesAuxiliares"
+          [ngClass]="[dispositivo.presionado =='incendio'? 'botonIncendioPresionado': ''] "
+          (touchstart)="presionar('incendio')" (touchend)="soltar('incendio')" />
+
+
+      </ion-col>
+
+      <ion-col size="2" class="noPadding"> </ion-col>
+
+      <ion-col size="4" class="noPadding textoCentrado">
+
+        <img [src]="sosiconoactual" alt="" text-center class="logo noPadding botonesAuxiliares"
+          [ngClass]="[dispositivo.presionado =='medica'? 'botonMedicaPresionado': '']"
+          (touchstart)="presionar('medica')" (touchend)="soltar('medica')" />
+
+      </ion-col>
+    </ion-row>
+
+
+
+  </ion-col>
+
+
+
+  <ion-row class="centrarElementos margenTop20vh" *ngIf="config.mostrardispositivos">
+
+    <ion-col size="12" class="noPadding centrarElementos">
+
+      <img src="../../../assets/iconos/dispositivos.png" alt="" text-center class="logo botonDispositivos"
+        (click)="abrirDispositivos()" />
+
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row class="centrarElementos margenTop15">
+
+    <ion-col size="3" class="noPadding " *ngIf="config.tienealarmas && config.mostrarenergia">
+
+
+      <ion-row class="centrarElementos noPadding">
+
+        <ion-col size="12" class="noPadding centrarElementos">
+
+          <img *ngIf="dispositivo.corriente" src="../../../assets/iconos/corrienteon.png" alt="" text-center
+            class="logo noPadding botonEstados" />
+
+          <img *ngIf="!dispositivo.corriente" src="../../../assets/iconos/corrienteoff.png" alt="" text-center
+            class="logo noPadding botonEstados" />
+
+        </ion-col>
+        <ion-col size="12" class="noPadding centrarElementos">
+
+
+          <img *ngIf="dispositivo.bateria" src="../../../assets/iconos/bateriaon.png" alt="" text-center
+            class="logo noPadding botonEstados" />
+
+          <img *ngIf="!dispositivo.bateria" src="../../../assets/iconos/bateriaoff.png" alt="" text-center
+            class="logo noPadding botonEstados" />
+
+
+
+
+        </ion-col>
+      </ion-row>
+
+
+    </ion-col>
+    <ion-col size="3" class="noPadding centrarElementos" *ngIf="config.tienecamaras">
+      <img src="../../../assets/iconos/camara.png" alt="" text-center
+        class="logo noPadding botonCamaras botonCamaraPresionado" (click)="abrirCamaras()" />
+    </ion-col>
+  </ion-row>
+
+</ion-content>

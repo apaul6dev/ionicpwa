@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Notificaciones</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="primary" id="nested-button" (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondoapp" #content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingText="Recargando...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let item of items">
+    <ion-card-content style="padding: 0 !important">
+      <ion-row>
+        <ion-col size="2" class="centradoVertical">
+
+          <img [src]="item.icono">
+        </ion-col>
+
+        <ion-col size="10">
+          <h2><strong> {{item.titulo}} </strong></h2>
+          <br />
+          <div class="textoNotificacion">{{item.mensaje}}</div>
+          <ion-row>
+            <ion-col size="8">
+              <ion-note>
+                <span style="font-size: 0.7rem">
+                  {{item.fevento | relativeTime }}</span>
+              </ion-note>
+            </ion-col>
+
+            <ion-col size="4">
+              <ion-button (click)="abrirAlerta(item)"> Ver </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="!exito">
+    <ion-card *ngFor="let fake of fakeUsers" class="fakeItem">
+      <ion-card-header>
+        <h2></h2>
+      </ion-card-header>
+      <ion-card-content>
+        <h3></h3>
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <p></p>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,132 @@
+<ion-card>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngIf="dispositivo.controlcerco">
+          <img *ngIf="!dispositivo.energizado" src="../../../assets/iconos/appcercoencender.png" alt="" text-center
+            class="logo" (click)="encender()" />
+
+          <img *ngIf="dispositivo.energizado" src="../../../assets/iconos/appcercoapagar.png" alt="" text-center
+            class="logo" (click)="apagar()" />
+        </ion-col>
+
+        <ion-col size="6" *ngIf="dispositivo.controlpuerta">
+          <img *ngIf="!dispositivo.abierto" src="../../../assets/iconos/apppuertaabrir.png" alt="" text-center
+            class="logo" (click)="abrir()" />
+
+          <img *ngIf="dispositivo.abierto" src="../../../assets/iconos/apppuertacerrar.png" alt="" text-center
+            class="logo" (click)="cerrar()" />
+        </ion-col>
+        <ion-col size="6" *ngIf="dispositivo.controlporton">
+          <img *ngIf="!dispositivo.abierto" src="../../../assets/iconos/appportonabrir.png" alt="" text-center
+            class="logo" (click)="abrir()" />
+
+          <img *ngIf="dispositivo.abierto" src="../../../assets/iconos/appportoncerrar.png" alt="" text-center
+            class="logo" (click)="cerrar()" />
+        </ion-col>
+
+
+        <ion-col size="12" *ngIf="dispositivo.controlalarma">
+          <ion-row>
+            <ion-col size="4">
+              <img *ngIf="!dispositivo.encendido1" src="../../../assets/iconos/robooff.png" alt="" text-center
+                class="logo" (click)="encender1(1)" />
+
+              <img *ngIf="dispositivo.encendido1" src="../../../assets/iconos/roboon.png" alt="" text-center
+                class="logo" (click)="encender1(0)" />
+            </ion-col>
+
+            <ion-col size="4">
+              <img *ngIf="!dispositivo.encendido2" src="../../../assets/iconos/fuegooff.png" alt="" text-center
+                class="logo" (click)="encender2(1)" />
+
+              <img *ngIf="dispositivo.encendido2" src="../../../assets/iconos/fuegoon.png" alt="" text-center
+                class="logo" (click)="encender2(0)" />
+            </ion-col>
+
+            <ion-col size="4">
+              <img *ngIf="!dispositivo.encendido3" src="../../../assets/iconos/sosoff.png" alt="" text-center
+                class="logo" (click)="encender3(1)" />
+
+              <img *ngIf="dispositivo.encendido3" src="../../../assets/iconos/soson.png" alt="" text-center class="logo"
+                (click)="encender3(0)" />
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+
+        <ion-col size="12" *ngIf="dispositivo.controlaudio || dispositivo.controlperifoneo">
+          <ion-row class="centrarElementos">
+            <ion-col *ngFor="let audioconf of listadeaudios" [size]="audioconf.size">
+              <img *ngIf="dispositivo.audio !== audioconf.audioid" [src]="audioconf.iconoff" alt="" text-center
+                class="logo" (click)="audio(audioconf.audioid)" />
+
+              <img *ngIf="dispositivo.audio === audioconf.audioid" [src]="audioconf.iconon" alt="" text-center
+                class="logo" (click)="audio(0)" />
+            </ion-col>
+
+          </ion-row>
+        </ion-col>
+
+
+
+        <ion-col size="12" *ngIf="dispositivo.controlnombre  && dispositivo.controlnombre >1">
+          <ion-text color="primary">
+            <h2 style="text-transform: uppercase;">{{ dispositivo.nombre }}</h2>
+          </ion-text>
+        </ion-col>
+
+        <ion-col size="6" *ngIf="dispositivo.controlnombre &&  dispositivo.controlnombre === 1">
+          <ion-text color="primary">
+            <h2 style="text-transform: uppercase;">{{ dispositivo.nombre }}</h2>
+          </ion-text>
+        </ion-col>
+
+
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6" class="iconoEstadoDispositivo" *ngIf="dispositivo.controlarmar">
+          <img *ngIf="dispositivo.armado" src="../../../assets/iconos/armadoon.png" alt="" text-center
+            (click)="armar(0)" />
+
+          <img *ngIf="!dispositivo.armado" src="../../../assets/iconos/armadooff.png" alt="" text-center
+            (click)="armar(1)" />
+          <br />
+
+        </ion-col>
+        <ion-col size="6" class="iconoEstadoDispositivo" *ngIf="dispositivo.controlauxiliar">
+          <img *ngIf="dispositivo.auxiliar" src="../../../assets/iconos/auxiliaron.png" alt="" text-center
+            (click)="setAuxiliar(0)" />
+
+          <img *ngIf="!dispositivo.auxiliar" src="../../../assets/iconos/auxiliaroff.png" alt="" text-center
+            (click)="setAuxiliar(1)" />
+          <br />
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6" class="iconoEstadoDispositivo" *ngIf="dispositivo.controlestadoenergia">
+          <img *ngIf="dispositivo.corriente" src="../../../assets/iconos/corrienteon.png" alt="" text-center
+            class="imagenEstadoDispositivo" />
+
+          <img *ngIf="!dispositivo.corriente" src="../../../assets/iconos/corrienteoff.png" alt="" text-center
+            class="imagenEstadoDispositivo" />
+          <br />
+          <ion-text color="primary">CORRIENTE</ion-text>
+        </ion-col>
+        <ion-col size="6" class="iconoEstadoDispositivo" *ngIf="dispositivo.controlestadoenergia">
+          <img *ngIf="dispositivo.bateria" src="../../../assets/iconos/bateriaon.png" alt="" text-center
+            class="imagenEstadoDispositivo" />
+
+          <img *ngIf="!dispositivo.bateria" src="../../../assets/iconos/bateriaoff.png" alt="" text-center
+            class="imagenEstadoDispositivo" />
+          <br />
+          <ion-text color="primary">BATERÍA </ion-text>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

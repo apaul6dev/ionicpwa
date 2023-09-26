@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" id="nested-button" (click)="goBack()">
+        <ion-icon slot="icon-only" ios="arrow-back-outline" md="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Ayuda</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-card *ngIf="datosAyuda" class="tarjeta">
+    <ion-card-header>
+      <h2>Ayuda</h2>
+
+    </ion-card-header>
+    <ion-card-content>
+
+      <div *ngIf="datosAyuda.texto">
+        <ion-label class="breakText">{{datosAyuda.texto}}</ion-label>
+      </div>
+
+      <ion-row *ngIf="datosAyuda.celular">
+        <ion-col size="12">
+          <ion-button color="secondary" size="small" (click)="llamar(datosAyuda.celular)">
+            <ion-icon name="call"></ion-icon>
+            <div>{{datosAyuda.celular}}</div>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row *ngIf="datosAyuda.correo">
+        <ion-col size="12">
+          <ion-button color="secondary" size="small">
+            <ion-icon name="mail"></ion-icon>
+            <div><a style="color: white;" href="mailto: {{datosAyuda.correo}}">{{datosAyuda.correo}}</a></div>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="datosAyuda.subtitulo">
+        <ion-col size="12"> {{datosAyuda.subtitulo}} </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="datosAyuda.url">
+        <ion-col class="textoCentrado">
+          <ion-label>
+            <a href="{{datosAyuda.url}}" target="_blank">Centro de ayuda</a>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="!datosAyuda && !loadingayuda" class="tarjeta">
+    <ion-card-header>
+      <h2>Ayuda</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col size="12">
+          Visita nuestro centro de ayuda para soporte
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="textoCentrado">
+          <ion-label>
+            <a href="https://d3studio.tk/ayuda-modosmart.html" target="_blank">Centro de ayuda</a>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,25 @@
+ion-item > div.item-native > .item-inner {
+  border: 0 !important;
+}
+
+ion-item::part(native) {
+  border: 0 !important;
+}
+
+::ng-deep ion-item > div.item-native.item-inner > .item-inner {
+  border: 0 !important;
+}
+
+::ng-deep ion-item::part(native) {
+  border: 0 !important;
+}
+
+::ng-deep ion-item::part(native)::part(div) {
+  border: 0 !important;
+}
+
+.contenedorPass {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 15px;
+}

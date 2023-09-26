@@ -1,0 +1,323 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import "~leaflet/dist/leaflet.css";
+
+ion-content {
+  --background: none;
+  /* background-image: url("/assets/fondo.png");*/
+  background-color: var(--ion-background-color);
+  background-position: center center;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --color: var(--ion-text-color);
+}
+
+ion-toolbar {
+  --background: var(--ion-background-color);
+  --background-color: var(--ion-background-color);
+  --padding-start: 10px !important;
+  --color: var(--ion-text-color);
+}
+
+.list-md {
+  background: transparent !important;
+}
+
+.list-ios {
+  background: transparent !important;
+}
+
+/*
+
+ion-list {
+  --background: rgb(57, 57, 61) !important;
+  --background: linear-gradient(0deg, rgb(49 49 52) 0%, rgb(68 72 79) 100%);
+  --padding-start: 10px !important;
+  --color: white;
+}
+
+ion-item {
+  --background: rgb(57, 57, 61);
+  --background: linear-gradient(0deg, rgb(49 49 52) 0%, rgb(68 72 79) 100%);
+  --padding-start: 10px !important;
+  --color: white;
+}*/
+
+ion-item>div.item-native {
+  background-color: transparent !important;
+  color: var(--ion-text-color);
+}
+
+ion-item::part(native) {
+  background-color: transparent !important;
+  color: var(--ion-text-color);
+}
+
+ion-tab-bar {
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
+}
+
+ion-card {
+  --background: var(--ion-background-color);
+  //--background: linear-gradient(0deg, rgb(49 49 52) 0%, rgb(68 72 79) 100%);
+  --color: var(--ion-text-color);
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  box-shadow: rgb(0 0 0 / 18%) 0px 10px 20px, rgb(0 0 0 / 41%) 0px 6px 6px;
+}
+
+ion-card-content {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+
+.textoNotificacion {
+  color: white !important;
+}
+
+.iconoEstadoDispositivo {
+  text-align: center;
+  font-size: 0.6rem;
+}
+
+.imagenEstadoDispositivo {
+  max-width: 40%;
+  max-height: 50%;
+}
+
+/*
+  ion-toolbar {
+    --background-color: transparent;
+    --ion-color-base: transparent !important;
+  }
+  */
+
+.margenTarjetas {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.title-default {
+  margin-inline: 0px !important;
+  padding-inline: 0px !important;
+}
+
+.sc-ion-label-ios-h {
+  --padding-end: 0px !important;
+}
+
+ion-item {
+  --padding-end: 0px !important;
+}
+
+ion-tab-bar {
+  justify-content: start !important;
+}
+
+.tarjeta {
+  margin-inline: 0px !important;
+}
+
+.centrarElementos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.borderInputData {
+  border-radius: 20px !important;
+  border-style: solid !important;
+  border-color: #008585 !important;
+}
+
+.fondoGris {
+  background-color: #262B31 !important;
+}
+
+.btnBig {
+  height: 50px !important;
+  border-radius: 20px !important;
+}
+
+.noPadding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.visible {
+  visibility: visible !important;
+}
+
+.textoBlanco {
+  color: white !important;
+}
+
+.oculto {
+  visibility: hidden !important;
+  display: none !important;
+}
+
+.textoCentrado {
+  text-align: center !important;
+}
+
+
+.centradoVertical {
+  display: flex !important;
+  align-content: center !important;
+  align-items: center !important;
+}
+
+.breakText {
+  white-space: normal !important;
+}
+
+/*
+.header-md::after {
+  background: transparent !important;
+}*/
+
+.headerBanner {
+  height: 15vh;
+}
+
+
+.roboIcono {
+  height: 30vh;
+}
+
+.botonesAuxiliares {
+  max-height: 20vh;
+  vertical-align: middle;
+}
+
+
+
+@keyframes fill {
+  0% {
+    clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%);
+  }
+
+  6% {
+    clip-path: polygon(50% 0%, 50% 25%, 100% 0);
+  }
+
+  12% {
+    clip-path: polygon(50% 0%, 50% 50%, 100% 0);
+  }
+
+  18% {
+    clip-path: polygon(50% 0%, 100% 0, 100% 35%, 50% 50%, 50% 50%);
+  }
+
+  25% {
+    clip-path: inset(0 0 50% 50%);
+  }
+
+  32% {
+    clip-path: polygon(50% 0%, 100% 0, 100% 75%, 50% 50%, 50% 50%);
+  }
+
+  38% {
+    clip-path: polygon(50% 0%, 100% 0, 100% 100%, 50% 50%);
+  }
+
+  44% {
+    clip-path: polygon(50% 0%, 100% 0, 100% 100%, 75% 100%, 50% 50%);
+  }
+
+  50% {
+    clip-path: inset(0 0 0 50%);
+  }
+
+  63% {
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%, 50% 50%);
+  }
+
+  75% {
+    clip-path: polygon(50% 0%, 100% 0%, 100% 0%, 100% 100%, 100% 100%, 50% 100%, 0% 100%, 0% 100%, 0 50%, 50% 50%);
+  }
+
+  88% {
+    clip-path: polygon(50% 0%, 100% 0, 100% 60%, 100% 100%, 0 100%, 0 0, 50% 50%);
+  }
+
+  100% {
+    clip-path: circle(50% at 50% 50%);
+  }
+
+
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+.ambulancia::after {
+  animation: fill ease-in-out 3s;
+  background-color: #ffffff;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  content: " ";
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(255, 255, 255, 0);
+  border-top-color: #fff;
+}
+
+
+
+
+.imagenTbotAyuda {
+  margin-top: 20px;
+  max-height: 30vh;
+}
+
+
+.botonModoSmart {
+
+  --border-radius: 20px;
+  ;
+}

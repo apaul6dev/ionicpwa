@@ -1,0 +1,53 @@
+.botonRoboPresionado {
+  transform: scale(0.98);
+
+  -webkit-filter: drop-shadow(4px 4px 10px rgb(13 116 140 / 47%)) drop-shadow(-2px -2px 10px rgb(13 116 140 / 47%));
+  filter: drop-shadow(4px 4px 10px rgb(13 116 140 / 47%)) drop-shadow(-2px -2px 10px rgb(13 116 140 / 47%));
+}
+
+.botonIncendioPresionado {
+  border-radius: 50%;
+  transform: scale(0.98);
+  box-shadow: 0px 4px 20px 3px rgb(13 116 140 / 47%);
+}
+
+.botonMedicaPresionado {
+  border-radius: 50%;
+  transform: scale(0.98);
+  box-shadow: 0px 4px 20px 3px rgb(13 116 140 / 47%);
+}
+
+
+
+.botonCamaras {
+  max-height: 12vh;
+  vertical-align: middle;
+}
+
+.botonEstados {
+  max-height: 4vh;
+  vertical-align: middle;
+}
+
+
+.margenTop15 {
+  margin-top: 15px;
+}
+
+.margenTop20vh {
+  margin-top: 20vh;
+}
+
+.botonCamaras:hover {
+  border-radius: 50%;
+  transform: scale(0.98);
+}
+
+
+
+.botonDispositivos:hover {
+  transform: scale(0.98);
+
+  -webkit-filter: drop-shadow(4px 4px 10px rgb(13 116 140 / 47%)) drop-shadow(-2px -2px 10px rgb(13 116 140 / 47%));
+  filter: drop-shadow(4px 4px 10px rgb(13 116 140 / 47%)) drop-shadow(-2px -2px 10px rgb(13 116 140 / 47%));
+}

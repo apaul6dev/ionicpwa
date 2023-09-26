@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atrás"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notificación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondoapp">
+  <ion-card>
+    <ion-card-content style="padding: 0 !important" *ngIf="item">
+      <ion-row>
+        <ion-col size="2"
+          class="{{item.alertaid==1?'red':''}}{{item.alertaid==3?'white':''}} {{item.alertaid==2?'orange':''}}">
+          <ion-icon name="{{item.iconoalerta}}" class="h1" [ngClass]="item.encendida?'encendida':'apagada'" item-start>
+          </ion-icon>
+        </ion-col>
+
+        <ion-col size="10">
+          <h2><strong> {{item.titulo}} </strong></h2>
+          <br />
+          {{item.mensaje}}
+          <ion-row>
+            <ion-col size="8">
+              <ion-note>
+                <span style="font-size: 0.7rem">
+                  {{item.fevento | relativeTime }}</span>
+              </ion-note>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row style="height: 30rem">
+        <ion-col size="12">
+          <div id="mapaReferencia" style="width: 100%; height: 100%"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button expand="block" (click)="comoLlegar()" class="botonesAccion botonModoSmart">
+            ¿Cómo llegar?
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="block" (click)="compartir()" class="botonesAccion botonModoSmart">
+            <ion-icon slot="start" name="share-social"></ion-icon> Compartir
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

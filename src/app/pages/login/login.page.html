@@ -1,0 +1,102 @@
+<ion-content class="fondoGris">
+  <ion-card class="cardLogin">
+    <ion-card-content class="contenidoLogin">
+  <ion-grid>
+    <ion-row class="centrarElementos">
+      <ion-col text-center size="12" class="textoCentrado noPadding">
+        <img
+          src="../../../assets/iconos/logotransparente.png"
+          alt=""
+          text-center
+          class="logo imagenLogin"
+        />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-text color="danger"> {{mensaje}} </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="centrarElementos">
+      <ion-col size="12">
+        <ion-list class="noPadding">
+          <ion-item class="borderInputData">
+            <ion-icon name="person" class="icon-login"></ion-icon>
+            <ion-input
+              name="user"
+              type="text"
+              [(ngModel)]="usuario.correo"
+              placeholder="Correo"
+            ></ion-input>
+          </ion-item>
+          <br />
+          <ion-item class="borderInputData">
+            <ion-icon name="lock-closed" class="icon-login"></ion-icon>
+            <ion-input
+              name="password"
+              #inputPass
+              type="password"
+              [(ngModel)]="usuario.password"
+              placeholder="Contraseña"
+            ></ion-input>
+            <ion-icon
+              name="eye"
+              (click)="toggleShowPassword()"
+              *ngIf="!showPassword"
+            ></ion-icon>
+            <ion-icon
+              name="eye-off"
+              (click)="toggleShowPassword()"
+              *ngIf="showPassword"
+            ></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row class="centrarElementos">
+      <ion-col size="11" >
+        <ion-button
+          fill="solid"
+          expand="full"
+          shape="round"
+          class="btnBig"
+          (click)="login()"
+        >
+          Entrar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="textoCentrado " size="6">
+        <ion-label (click)="recuperarClave()">
+          <h3>¿Olvido su contraseña?</h3>
+        </ion-label>
+      </ion-col>
+      <ion-col class="textoCentrado" size="6">
+        <ion-label>
+          <a href="https://d3studio.tk/ayuda-modosmart.html" target="_blank"
+            >Centro de ayuda</a
+          >
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row class="centrarElementos">
+      <ion-col text-center size="12" class="textoCentrado noPadding">
+        <img
+          [src]="imagenTbot"
+          (click)="clickTbot()"
+          alt=""
+          text-center
+          class="logo imagenTbot"
+        />
+      </ion-col>
+    </ion-row>
+
+    </ion-grid>
+
+</ion-content>

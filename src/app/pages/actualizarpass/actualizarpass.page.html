@@ -1,0 +1,123 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" id="nested-button" (click)="goBack()">
+        <ion-icon
+          slot="icon-only"
+          ios="arrow-back-outline"
+          md="arrow-back-outline"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Actualizar contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondoapp">
+  <ion-card class="tarjeta contenedorPass">
+    <ion-item lines="none">
+      <ion-label>Contraseña anterior</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="borderInputData">
+      <ion-input
+        name="password"
+        #inputPassAnt
+        type="password"
+        [(ngModel)]="passanterior"
+        autocomplete="current-password"
+        maxlength="20"
+        placeholder="Contraseña anterior"
+      ></ion-input>
+      <ion-icon
+        name="eye"
+        (click)="toggleShowPassword(inputPassAnt,1)"
+        *ngIf="!showPasswordAnt"
+      ></ion-icon>
+      <ion-icon
+        name="eye-off"
+        (click)="toggleShowPassword(inputPassAnt,1)"
+        *ngIf="showPasswordAnt"
+      ></ion-icon>
+    </ion-item>
+
+    <br />
+
+    <ion-item lines="none">
+      <ion-label>Nueva contraseña</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="borderInputData">
+      <ion-input
+        name="password"
+        #inputPassnueva1
+        type="password"
+        [(ngModel)]="passnueva1"
+        autocomplete="new-password"
+        maxlength="20"
+        placeholder="Nueva contraseña"
+      ></ion-input>
+      <ion-icon
+        name="eye"
+        (click)="toggleShowPassword(inputPassnueva1,2)"
+        *ngIf="!showPasswordNew1"
+      ></ion-icon>
+      <ion-icon
+        name="eye-off"
+        (click)="toggleShowPassword(inputPassnueva1,2)"
+        *ngIf="showPasswordNew1"
+      ></ion-icon>
+    </ion-item>
+
+    <br />
+
+    <ion-item lines="none">
+      <ion-label>Repita la nueva contraseña</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="borderInputData">
+      <ion-input
+        name="password"
+        #inputPassnueva2
+        type="password"
+        [(ngModel)]="passnueva2"
+        autocomplete="new-password"
+        maxlength="20"
+        placeholder="Repita la nueva contraseña"
+      ></ion-input>
+      <ion-icon
+        name="eye"
+        (click)="toggleShowPassword(inputPassnueva2,3)"
+        *ngIf="!showPasswordNew2"
+      ></ion-icon>
+      <ion-icon
+        name="eye-off"
+        (click)="toggleShowPassword(inputPassnueva2,3)"
+        *ngIf="showPasswordNew2"
+      ></ion-icon>
+    </ion-item>
+
+    <ion-item lines="none">
+      <h6 style="font-size: 12px">
+        *La contraseña debe contener al menos 6 caracteres
+      </h6>
+    </ion-item>
+
+    <br />
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            expand="block"
+            color="primary"
+            (click)="actualizarDatos()"
+          >
+            Actualizar</ion-button
+          >
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" color="danger" (click)="cancelar()"
+            >Cancelar</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,95 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mi comunidad</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button
+        color="primary"
+        id="nested-button"
+        (click)="presentPopover($event)"
+      >
+        <ion-icon
+          slot="icon-only"
+          ios="ellipsis-horizontal"
+          md="ellipsis-vertical"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondoapp">
+  <!-- Searchbar with a cancel button and custom cancel button text -->
+  <ion-searchbar
+    color="gris"
+    placeholder="Buscar"
+    [(ngModel)]="searchQuery"
+    (ionChange)="search($event)"
+    cancelButtonText="Cancelar"
+  ></ion-searchbar>
+
+  <ion-card *ngFor="let item of items" class="margenTarjetas">
+    <ion-card-content>
+      <ion-row (click)="mostrarDatos(item)">
+        <ion-col size="2">
+          <ion-icon name="medkit" class="iconoCom" *ngIf="item.sos"></ion-icon>
+          <ion-icon name="person" class="iconoCom" *ngIf="!item.sos"></ion-icon>
+        </ion-col>
+        <ion-col size="9">
+          <h2>{{item.nombres}} {{item.apellidos}}</h2>
+          <p></p>
+        </ion-col>
+
+        <ion-col size="1">
+          <ion-icon
+            name="chevron-down-circle-outline"
+            class="iconoMore"
+            *ngIf="!item.mostrar"
+          ></ion-icon>
+          <ion-icon
+            name="chevron-up-circle-outline"
+            class="iconoMore"
+            *ngIf="item.mostrar"
+          ></ion-icon>
+        </ion-col>
+      </ion-row>
+      <div *ngIf="item.mostrar">
+        <hr />
+        <ion-row *ngIf="item.celular">
+          <ion-col size="12">
+            <ion-button
+              color="secondary"
+              size="small"
+              (click)="llamar(item.nombres, item.celular)"
+            >
+              <ion-icon name="call"></ion-icon>
+              <div>{{item.celular}}</div>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="item.telefono">
+          <ion-col size="12">
+            <ion-button
+              icon-start
+              color="secondary"
+              size="small"
+              (click)="llamar(item.nombres, item.telefono)"
+            >
+              <ion-icon name="home"></ion-icon>
+              <div>{{item.telefono}}</div>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="item.descripcion">
+          <ion-col size="12">
+            <div>{{item.descripcion}}</div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

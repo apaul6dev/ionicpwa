@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dispositivos</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button
+        color="primary"
+        id="nested-button"
+        (click)="presentPopover($event)"
+      >
+        <ion-icon
+          slot="icon-only"
+          ios="ellipsis-horizontal"
+          md="ellipsis-vertical"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let item of items">
+    <app-cerco
+      [dispositivo]="item"
+      [coordenadas]="coordenadas"
+      *ngIf="item.ctipodispositivo != 5"
+    ></app-cerco>
+  </div>
+</ion-content>

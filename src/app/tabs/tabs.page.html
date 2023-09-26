@@ -1,0 +1,29 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom" class="segment-card">
+    <ion-tab-button class="segment-item" tab="inicio" id="tabInicio">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Inicio</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button class="segment-item" tab="dispositivos"
+      *ngIf="authService.config && authService.config.tienedispositivos">
+      <ion-icon name="apps"></ion-icon>
+      <ion-label>Dispositivos</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button class="segment-item" tab="notificaciones">
+      <ion-icon name="notifications"></ion-icon>
+      <ion-label>Notificaciones</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button class="segment-item" tab="chat" *ngIf="authService.config && authService.config.tienechat">
+      <ion-icon name="chatbubble-ellipses"></ion-icon>
+      <ion-label>Mensajes</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button class="segment-item" tab="comunidad">
+      <ion-icon name="people"></ion-icon>
+      <ion-label>Comunidad</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

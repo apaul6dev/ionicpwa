@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mensajes</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="primary" id="nested-button" (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondoapp" #content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingText="Obteniendo más mensajes...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-infinite-scroll threshold="15%" (ionInfinite)="doInfinite($event)" position="top">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-grid>
+    <ion-row *ngFor="let chat of msgList.slice().reverse() ">
+      <ion-col size="9" *ngIf="!chat.yo" class="message received">
+        <b>{{chat.nombres}}</b><br />
+        <span>{{chat.texto}}</span>
+        <div class="time" text-rigth>{{chat.relativetime }}</div>
+      </ion-col>
+
+      <ion-col offset="3" size="9" *ngIf="chat.yo" class="message sent"
+        [ngClass]="chat.estado == 'fail' ? 'fail' : null">
+        <div class="ion-text-end">
+          <ion-spinner name="dots" *ngIf="chat.estado === 'pending'"></ion-spinner>
+          <b>{{chat.nombres}}</b>
+        </div>
+        <span>{{chat.texto}}</span>
+
+        <div class="time" text-rigth>{{chat.relativetime }}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="message-wrap" *ngIf="!exito">
+    <div *ngFor="let fake of fakeUsers" class="fakeItem left">
+      <div class="msg-detail">
+        <div class="msg-info">
+          <h2></h2>
+        </div>
+        <div>
+          <p class="line-breaker"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer no-border [style.height]="showEmojiPicker ? '255px' : '55px'">
+  <div class="input-wrap">
+    <ion-textarea #chat_input id="chattext" class="textoBlanco" placeholder="Escriba un mensaje" maxlength="1000"
+      [(ngModel)]="editorMsg" (keyup.enter)="sendMsg()">
+    </ion-textarea>
+    <ion-button clear icon-only *ngIf="false" item-right (click)="sendMsg();$event.preventDefault()">
+      <ion-icon name="send"></ion-icon>
+    </ion-button>
+
+    <label for="chattext" ion-button icon-only round outline class="send" (click)="sendMsg();">
+      <ion-icon name="send"></ion-icon>
+    </label>
+  </div>
+</ion-footer>

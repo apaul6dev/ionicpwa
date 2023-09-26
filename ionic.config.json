@@ -1,0 +1,7 @@
+{
+  "name": "Modo Smart",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
